@@ -610,7 +610,7 @@ class Bounce(TargetedAction):
 	def do(self, source, target):
 		if len(target.controller.hand) >= target.controller.max_hand_size:
 			log.info("%r is bounced to a full hand and gets destroyed", target)
-			return source.game.queue_actions(source, [Destroy(target)])
+			return source.game.trigger_actions(source, [Destroy(target)])
 		else:
 			log.info("%r is bounced back to %s's hand", target, target.controller)
 			target.zone = Zone.HAND
